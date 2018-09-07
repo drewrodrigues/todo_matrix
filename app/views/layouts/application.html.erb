@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestApp</title>
+    <%= stylesheet_link_tag    'application' %> 
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'hello_vue' %>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <%= yield %>
+  </body>
+</html>
