@@ -36,3 +36,6 @@ yarn-debug.log*
 .yarn-integrity
 .swp
 *.swp
+.DS_STORE
+.swp
+*.swp
