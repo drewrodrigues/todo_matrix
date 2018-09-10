@@ -9,6 +9,7 @@ class TodosController < ApplicationController
   # POST /todos
   def create
     todo = Todo.new(todo_params)
+    todo.due = parse_date(params[:due])
     if todo.save
       render json: todo
     else
@@ -29,5 +30,12 @@ class TodosController < ApplicationController
 
   def todo_params
     params.require(:todo).permit(:title, :priority, :details, :due, :position)
+  end
+
+  def parse_date(incoming)
+    # TODO: add test
+    # incoming YYYY-MM-DD
+    date = incoming.split('-').map(&:to_i)
+    Date.new(date[0], date[1], date[2])
   end
 end
