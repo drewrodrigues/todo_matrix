@@ -4,8 +4,9 @@
 # priority         integer             null(false)
 # title            string              null(false)
 class Todo < ApplicationRecord
-  validate :due_date_today_or_further
   validates :position, presence: true
+
+  validate :due_date_today_or_further, on: :create
   validates :priority, presence: true, inclusion: { in: [1, 2, 3, 4] }
   validates :title, presence: true
 
@@ -13,8 +14,6 @@ class Todo < ApplicationRecord
 
   def due_date_today_or_further
     return true if due.nil?
-    if due < Date.today
-      errors.add(:due, "can't be less than today")
-    end
+    errors.add(:due, "can't be less than today") if due < Date.today
   end
 end
