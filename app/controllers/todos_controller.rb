@@ -33,6 +33,7 @@ class TodosController < ApplicationController
   end
 
   def parse_date(incoming)
+    return nil unless incoming
     # TODO: add test
     # incoming YYYY-MM-DD
     date = incoming.split('-').map(&:to_i)
