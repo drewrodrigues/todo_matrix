@@ -13,7 +13,7 @@ class TodosController < ApplicationController
     if todo.save
       render json: todo
     else
-      render :json => { errors: todo.errors.full_messages }, :status => 422
+      render json: { errors: todo.errors.full_messages }, status: 422
     end
   end
 
@@ -36,7 +36,7 @@ class TodosController < ApplicationController
     return nil unless incoming
     # TODO: add test
     # incoming YYYY-MM-DD
-    date = incoming.split('-').map(&:to_i)
+    date = incoming.split("-").map(&:to_i)
     Date.new(date[0], date[1], date[2])
   end
 end

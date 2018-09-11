@@ -1,4 +1,3 @@
 class AppController < ApplicationController
-  def app
-  end
+  def app; end
 end

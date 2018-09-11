@@ -1,5 +1,5 @@
-require 'rails_helper'
-require 'positionable'
+require "rails_helper"
+require "positionable"
 
 RSpec.describe Positionable do
   describe "#sort_positions" do
@@ -23,7 +23,7 @@ RSpec.describe Positionable do
     context "when position isn't taken" do
       it "returns nil" do
         first_todo = create(:todo, priority: 1, position: 1)
-        second_todo = create(:todo, priority: 1, position: 2)
+        create(:todo, priority: 1, position: 2)
 
         expect(first_todo.todo_to_reposition).to eq(nil)
       end

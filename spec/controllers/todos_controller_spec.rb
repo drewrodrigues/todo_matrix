@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe TodosController, type: :controller do
   let(:valid_params) { build_stubbed(:todo).attributes }
@@ -8,7 +8,7 @@ RSpec.describe TodosController, type: :controller do
       todos = create_list(:todo, 3)
 
       get :index
-      
+
       expect(response.body).to eq(todos.to_json)
     end
   end
@@ -16,9 +16,9 @@ RSpec.describe TodosController, type: :controller do
   describe "POST create" do
     context "valid params passed" do
       it "increments todos by 1" do
-        expect {
+        expect do
           post :create, params: { todo: valid_params }
-        }.to change(Todo, :count).by(1)
+        end.to change(Todo, :count).by(1)
       end
 
       it "returns the todo in JSON" do
@@ -55,9 +55,9 @@ RSpec.describe TodosController, type: :controller do
       it "decrements todos by 1" do
         todo = create(:todo)
 
-        expect {
+        expect do
           delete :destroy, params: { id: todo.id }
-        }.to change(Todo, :count).by(-1)
+        end.to change(Todo, :count).by(-1)
       end
 
       it "returns a success code" do

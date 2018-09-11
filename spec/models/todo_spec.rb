@@ -1,5 +1,5 @@
-require 'rails_helper'
-require 'timecop'
+require "rails_helper"
+require "timecop"
 
 RSpec.describe Todo, type: :model do
   # TODO: create expect_validity gem
@@ -33,8 +33,8 @@ RSpec.describe Todo, type: :model do
       it "is valid" do
         todo = build_stubbed(:todo)
 
-        todo.due = Date.today 
-        Timecop.travel(Date.today + 1) 
+        todo.due = Date.today
+        Timecop.travel(Date.today + 1)
 
         expect(todo).to be_valid
       end
@@ -44,13 +44,13 @@ RSpec.describe Todo, type: :model do
       it "is invalid " do
         todo = build(:todo)
 
-        todo.due = Date.today - 1 
+        todo.due = Date.today - 1
 
         expect(todo).to_not be_valid
       end
     end
   end
-  
+
   describe "position" do
     it "must be present" do
       todo = build_stubbed(:todo)

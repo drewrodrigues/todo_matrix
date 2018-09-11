@@ -3,7 +3,7 @@ FactoryBot.define do
     details { "Some details go here" }
     due { Date.today }
     priority { rand(1..4) }
-    sequence(:position) 
+    sequence(:position)
     title { "Title goes here" }
   end
 end
